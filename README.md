@@ -1,5 +1,7 @@
 # Bem vindo ao Fokus 👋
 
+Fokus tem a função de auxiliar o usuário em suas tarefas através do método Pomodoro, oferecendo timers de 5, 15 e 25 minutos.
+
 ## Tutorial
 
 1. Como instalar
