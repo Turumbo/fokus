@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { ActionButton } from "../components/ActionButton";
+import { FokusButton } from "../components/FokusButton";
 
 const pomodoro = [
   {
@@ -35,24 +37,18 @@ export default function Index() {
       <View style={styles.actions}>
         <View style={styles.context}>
           {pomodoro.map(p => (
-            <Pressable 
+            <ActionButton 
               key={p.id}
-              style={timerType.id === p.id ? styles.contextButtonActive : null}
-              onPress={() => setTimerType(p)}>
-            <Text style={styles.contextButtonText}>
-              {p.display}
-            </Text>
-          </Pressable>
+              active={timerType.id === p.id}
+              onPress={() => setTimerType(p)}
+              display={p.display}
+            />
           ))}      
         </View>
         <Text style={styles.timer}>
           {new Date(timerType.initialValue * 1000).toLocaleTimeString('pt-BR', {minute: '2-digit', second: '2-digit'})}
         </Text>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>
-            Começar
-          </Text>
-        </Pressable>
+        <FokusButton />
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>
@@ -93,32 +89,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center"
   },
-  contextButtonActive: {
-    backgroundColor: "#144480",
-    borderRadius: 8
-  },
-  contextButtonText: {
-    fontSize: 12.5,
-    color: "#FFF",
-    padding: 8
-  },
   timer: {
     fontSize: 54,
     color: "#FFF",
     fontWeight: "bold",
     textAlign: "center",
   },
-  button: {
-    backgroundColor: "#B872FF",
-    borderRadius: 32,
-    padding: 8
-  },
-  buttonText: {
-    textAlign: "center",
-    color: "#021123",
-    fontSize: 18
-  },
-    footer: {
+  footer: {
     width: '80%',
   },
   footerText: {
